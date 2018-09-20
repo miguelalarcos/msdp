@@ -1,6 +1,36 @@
 # example of use
 
 ```html
+<!-- your main component, see v-if connected-->
+<template>
+  <div class="home">
+    <img alt="Vue logo" src="../assets/logo.png">
+    <div v-if="connected">
+      <HelloWorld msg="Welcome to Your Vue.js App"/>
+    </div>
+    <div v-else>
+      <span>connecting...</span>
+  </div>
+  </div>
+</template>
+
+<script>
+import HelloWorld from '@/components/HelloWorld.vue'
+
+export default {
+  name: 'home',
+  components: {
+    HelloWorld
+  },
+  computed: {
+    connected(){
+      return this.$store.state.sdp.isConnected
+    }
+  }
+}
+</script>
+
+<!-- your component -->
 <template>
   <div v-if="$subsReady">
     <h1>{{ msg }}</h1>
@@ -10,10 +40,13 @@
     <button @click="suma">2 + 3 = </button>
     <span>{{valor}}</span> 
   </div>
+  <div v-else>
+    Loading...
+  </div>
 </template>
 
 <script>
-import { SDP_Mixin } from '../sdp'
+import { SDP_Mixin } from 'msdp'
 
 export default {
   name: 'HelloWorld',
@@ -60,4 +93,18 @@ export default {
   cursor: pointer;
 }
 </style>
+```
+
+```javascript
+import Vue from 'vue'
+import Vuex from 'vuex'
+import { moduleSocket } from 'msdp'
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  modules: {
+    sdp: moduleSocket,
+  }
+})
 ```
