@@ -1,0 +1,8 @@
+{
+  "name": "sdp",
+  "version": "1.0.0",
+  "description": "subscription data protocol",
+  "main": "index.js",
+  "author": "Miguel Ángel Alarcos Torrecillas <miguel.alarcos@gmail.com>",
+  "license": "MIT"
+}
