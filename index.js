@@ -1,4 +1,3 @@
-import { SDP_Mixin, connect } from './sdp'
-import { moduleSocket } from './socketModule'
+import { SDP_Mixin, connect, moduleSocket } from './sdp'
 
 export { SDP_Mixin, moduleSocket, connect }
